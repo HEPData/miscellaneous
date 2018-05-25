@@ -11,6 +11,9 @@ There is an option to also compare annotations (not done by default) with "-a" o
 Examples:
  %prog ATLAS_2017_I1614149.yoda -i 1614149 -a
  %prog ATLAS_2017_I1614149.yoda -d HEPData-ins1614149-v2-yoda.yoda -a
+
+Note added: much of the functionality of this script, apart from the HEPData download and optional comparison of annotations,
+is already available in the yodadiff script distributed with YODA (https://yoda.hepforge.org/trac/browser/bin/yodadiff).
 """
 
 from __future__ import print_function
@@ -104,10 +107,10 @@ def download_from_hepdata(inspire_id):
     except:
         from urllib2 import urlopen, URLError
     #
-    hdurl = "https://hepdata.net/record/ins%s?format=yoda" % inspire_id
+    hdurl = "https://hepdata.net/record/ins%s" % inspire_id
     logger.info("Downloading from %s" % hdurl)
     try:
-        response = urlopen(hdurl)
+        response = urlopen(hdurl + '?format=yoda')
     except URLError as e:
         logger.error("Download failed (%s), does %s exist?" % (e.reason, hdurl))
         return None
@@ -176,12 +179,11 @@ def isZero(val, tolerance=1e-8):
     Compare a floating point number to zero with a degree of fuzziness expressed by the absolute tolerance parameter.
     Copied from C++ implementation in https://yoda.hepforge.org/trac/browser/include/YODA/Utils/MathUtils.h.
 
-    :param val:
+    :param val: floating point number
     :param tolerance: absolute tolerance parameter
     :return: True or False depending on whether val is compatible with zero
     """
 
-    """ Copied from C++ implementation in https://yoda.hepforge.org/trac/browser/include/YODA/Utils/MathUtils.h. """
     return abs(val) < tolerance
 
 

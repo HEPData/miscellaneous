@@ -1,0 +1,97 @@
+#! /usr/bin/env python
+
+"""\
+%prog [-h|--help] yodafile [-i|--inspire_id INSPIRE_ID] [-d|--yodafile_from_hepdata YODAFILE_FROM_HEPDATA]
+
+Check compatibility of a YODA reference data file, intended for inclusion in Rivet, with the YODA file downloaded from HEPData.
+Specify either the INSPIRE_ID (to download the YODA file from HEPData) or the already-downloaded YODAFILE_FROM_HEPDATA.
+Make the comparison using the yodadiff script distributed with YODA (https://yoda.hepforge.org/trac/browser/bin/yodadiff).
+
+Examples:
+ %prog ATLAS_2017_I1614149.yoda -i 1614149
+ %prog ATLAS_2017_I1614149.yoda -d HEPData-ins1614149-v2-yoda.yoda
+"""
+
+from __future__ import print_function
+
+__author__ = 'Graeme Watt'
+
+def main():
+    """ Main function for command-line usage. """
+    import argparse
+    parser = argparse.ArgumentParser(description='Check compatibility of YODA reference data file with HEPData')
+    parser.add_argument('yodafile', help='name of YODA reference data file (intended for inclusion in Rivet)')
+    group = parser.add_mutually_exclusive_group()
+    group.add_argument('-i', '--inspire_id', nargs=1, default=[0], type=int, help='INSPIRE ID (to download the YODA file from HEPData')
+    group.add_argument('-d', '--yodafile_from_hepdata', nargs=1, default=[None], help='name of YODA file already downloaded from HEPData')
+    args = parser.parse_args()
+    compatible = compare_hepdata(args.yodafile, args.inspire_id[0], args.yodafile_from_hepdata[0])
+    if compatible:
+        print('YODA reference data files from Rivet and HEPData are compatible!')
+    else:
+        print('YODA reference data files from Rivet and HEPData are NOT compatible!')
+
+
+def compare_hepdata(yodafile, inspire_id=0, yodafile_from_hepdata=None):
+    """\
+    Compare a YODA reference data file, intended for inclusion in Rivet, with the YODA file downloaded from HEPData.
+    Make the comparison using the yodadiff script distributed with YODA (https://yoda.hepforge.org/trac/browser/bin/yodadiff).
+
+    :param yodafile: name of YODA reference data file (intended for inclusion in Rivet)
+    :param inspire_id: INSPIRE ID (to download the YODA file from HEPData)
+    :param yodafile_from_hepdata: name of YODA file already downloaded from HEPData
+    :return: True or False depending on whether YODA files are compatible
+    """
+
+    if inspire_id:
+        yodafile_from_hepdata = download_from_hepdata(inspire_id)
+
+    if yodafile_from_hepdata:
+        print('Comparing %s with %s' % (yodafile, yodafile_from_hepdata))
+        import subprocess
+        exit_status = subprocess.call(['yodadiff', yodafile, yodafile_from_hepdata])
+        if exit_status:
+            return False
+    else:
+        print('No YODA file from HEPData specified')
+        return False
+
+    return True
+
+
+def download_from_hepdata(inspire_id):
+    """\
+    Download the latest YODA reference data file from HEPData identified by the INSPIRE ID.
+    Function contents modified from https://rivet.hepforge.org/trac/browser/bin/rivet-mkanalysis.
+    It would be nicer to use the "requests" module if it can be assumed to be available.
+
+    :param inspire_id: INSPIRE ID
+    :return: name of YODA file downloaded from HEPData
+    """
+
+    import tarfile, io
+
+    try:
+        from urllib.request import urlopen
+        from urllib.error import URLError
+    except:
+        from urllib2 import urlopen, URLError
+    #
+    hdurl = "https://hepdata.net/record/ins%s" % inspire_id
+    print("Downloading from %s" % hdurl)
+    try:
+        response = urlopen(hdurl + '?format=yoda')
+    except URLError as e:
+        print("Download failed (%s), does %s exist?" % (e.reason, hdurl))
+        return None
+    download = response.read()
+    tar = tarfile.open(mode="r:gz", fileobj=io.BytesIO(download))
+    tar.extractall()
+    yodafile_from_hepdata = tar.getnames()[0]
+    response.close()
+    print("Downloaded %s" % yodafile_from_hepdata)
+    return yodafile_from_hepdata
+
+
+if __name__ == "__main__":
+    main()

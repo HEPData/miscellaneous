@@ -23,3 +23,12 @@ Written by Graeme Watt (Project Manager for HEPData) on 11th October 2017.
 This Python script checks compatibility of a [YODA](http://yoda.hepforge.org)
 reference data file, intended for inclusion in [Rivet](http://rivet.hepforge.org),
 with the YODA file downloaded from [HEPData](https://hepdata.net).
+
+### [rivet-diffhepdata](scripts/rivet-diffhepdata)
+
+This Python script does much the same as
+[yoda_compare_hepdata.py](scripts/yoda_compare_hepdata.py) but it uses
+the [yodadiff](https://yoda.hepforge.org/trac/browser/bin/yodadiff)
+script distributed with [YODA](http://yoda.hepforge.org).  It is
+intended for possible future inclusion in the
+[Rivet](http://rivet.hepforge.org) distribution.
