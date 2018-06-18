@@ -42,7 +42,7 @@ def compare_hepdata(yodafile, inspire_id=0, yodafile_from_hepdata=None, output=N
     :param yodafile: name of YODA reference data file (intended for inclusion in Rivet)
     :param inspire_id: INSPIRE ID (to download the YODA file from HEPData)
     :param yodafile_from_hepdata: name of YODA file already downloaded from HEPData
-    :param output: name of output file for yodadiff instead of stdout (note: -o option of yodadiff
+    :param output: name of output file for yodadiff instead of stdout (note: -o option of yodadiff not implemented)
     :return: True or False depending on whether YODA files are compatible
     """
 

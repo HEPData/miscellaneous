@@ -32,3 +32,13 @@ the [yodadiff](https://yoda.hepforge.org/trac/browser/bin/yodadiff)
 script distributed with [YODA](http://yoda.hepforge.org).  It is
 intended for possible future inclusion in the
 [Rivet](http://rivet.hepforge.org) distribution.
+
+### [rivet-diffhepdata-all](scripts/rivet-diffhepdata-all)
+
+This Python script loops over all INSPIRE IDs given in
+[analyses.json](http://rivet.hepforge.org/analyses.json) and compares
+each [Rivet](http://rivet.hepforge.org) `.yoda` file with the
+corresponding HEPData download.  It calls functions from the previous
+[rivet-diffhepdata](scripts/rivet-diffhepdata) script which in turn calls
+[yodadiff](https://yoda.hepforge.org/trac/browser/bin/yodadiff).  See example
+[output](http://ippp.dur.ac.uk/%7Ewatt/RivetDiffHEPData/Rivet-2.6.0/).
