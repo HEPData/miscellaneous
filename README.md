@@ -16,7 +16,28 @@ has a HEPData record.
 
 Written by Graeme Watt (Project Manager for HEPData) on 11th October 2017.
 
+### [plot_submissions_per_coordinator.ipynb](notebooks/plot_submissions_per_coordinator.ipynb)
+
+This Jupyter notebook makes some plots showing the number of HEPData
+submissions in progress and finished by different experiments, including
+a breakdown by the different ATLAS and CMS physics groups.  The input is
+a CSV file obtained by running the command
+`hepdata submissions write_stats_to_files`
+in the production environment.
+
+### [plot_submissions_with_date.ipynb](notebooks/plot_submissions_with_date.ipynb)
+
+This Jupyter notebook makes a plot showing the number of "version 1"
+HEPData submissions per month, with a linear fit overlaid.  Again, the
+input is a (different) CSV file obtained by running the command
+`hepdata submissions write_stats_to_files`
+in the production environment.
+
 ## [scripts](scripts)
+
+Note added: updated versions of the `rivet-diffhepdata` and
+`rivet-diffhepdata-all` scripts linked below are now included
+in the official [Rivet](http://rivet.hepforge.org) distribution.
 
 ### [yoda_compare_hepdata.py](scripts/yoda_compare_hepdata.py)
 
@@ -41,4 +62,4 @@ each [Rivet](http://rivet.hepforge.org) `.yoda` file with the
 corresponding HEPData download.  It calls functions from the previous
 [rivet-diffhepdata](scripts/rivet-diffhepdata) script which in turn calls
 [yodadiff](https://yoda.hepforge.org/trac/browser/bin/yodadiff).  See example
-[output](http://ippp.dur.ac.uk/%7Ewatt/RivetDiffHEPData/Rivet-2.6.0/).
+[output](http://www.ippp.dur.ac.uk/%7Ewatt/RivetDiffHEPData/Rivet-2.6.0/).
