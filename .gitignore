@@ -1,0 +1,10 @@
+# Jupyter Notebook
+notebooks/.ipynb_checkpoints
+notebooks/*.png
+notebooks/*.csv
+
+# Environments
+venv
+
+# macOS
+.DS_Store
