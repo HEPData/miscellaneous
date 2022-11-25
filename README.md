@@ -33,3 +33,12 @@ HEPData submissions per month, with a linear fit overlaid.  Again, the
 input is a (different) CSV file obtained by running the command
 `hepdata submissions write-stats-to-files`
 in the production environment.
+
+### [investigate_hepdata_release_delay.ipynb](notebooks/investigate_hepdata_release_delay.ipynb)
+
+This Jupyter notebook investigates the delay between arXiv publication, indicated by creation of
+an [INSPIRE](https://inspirehep.net) record, and release of the first version of a corresponding
+[HEPData](https://www.hepdata.net) record.  A histogram is plotted of these delays for a given
+time period and experimental collaboration.
+
+Written by Graeme Watt on 25th November 2022.
