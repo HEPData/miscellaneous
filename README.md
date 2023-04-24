@@ -42,3 +42,9 @@ an [INSPIRE](https://inspirehep.net) record, and release of the first version of
 time period and experimental collaboration.
 
 Written by Graeme Watt on 25th November 2022.
+
+### [compare_inspire_and_hepdata.ipynb](notebooks/compare_inspire_and_hepdata.ipynb)
+
+This Jupyter notebook investigates the consistency between the INSPIRE record numbers obtained from
+either [INSPIRE](https://inspirehep.net) or [HEPData](https://www.hepdata.net).  Discrepancies usually
+occur because an INSPIRE record has changed its record number.
