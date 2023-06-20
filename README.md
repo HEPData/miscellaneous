@@ -48,3 +48,13 @@ Written by Graeme Watt on 25th November 2022.
 This Jupyter notebook investigates the consistency between the INSPIRE record numbers obtained from
 either [INSPIRE](https://inspirehep.net) or [HEPData](https://www.hepdata.net).  Discrepancies usually
 occur because an INSPIRE record has changed its record number.
+
+### [compare_latex_to_unicode.ipynb](notebooks/compare_latex_to_unicode.ipynb)
+
+This Jupyter notebook compares the LaTeX to Unicode conversions obtained with three different Python packages:
+[latex2text](https://pylatexenc.readthedocs.io/en/latest/latex2text/),
+[unicodeit](https://github.com/svenkreiss/unicodeit) and
+[unicodeitplus](https://github.com/HDembinski/unicodeitplus).
+Test data is obtained from the publication titles of all finished [HEPData](https://hepdata.net) records.
+The intended application is to [tweet](https://twitter.com/HEPData) these titles when the HEPData records
+are first released or later revised.
