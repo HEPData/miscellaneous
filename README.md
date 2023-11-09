@@ -58,3 +58,13 @@ This Jupyter notebook compares the LaTeX to Unicode conversions obtained with th
 Test data is obtained from the publication titles of all finished [HEPData](https://hepdata.net) records.
 The intended application is to [tweet](https://twitter.com/HEPData) these titles when the HEPData records
 are first released or later revised.
+
+### [get_access_count.ipynb](notebooks/get_access_count.ipynb)
+
+This Jupyter notebook gets the access count of all records in [HEPData](https://www.hepdata.net/) from the
+ATLAS experiment.  It first makes a paginated search
+"[collaborations:ATLAS](https://www.hepdata.net/search/?q=collaborations%3AATLAS&sort_by=date)"
+to find the [INSPIRE](https://inspirehep.net) IDs.  Then the JSON format of individual records is retrieved
+to get the access counts and associated metadata, using the `light=true` option to reduce the size of the
+JSON by removing data tables.  See [JSON Endpoints](https://www.hepdata.net/formats#json_endpoints).  The output
+is written to a CSV file for possible further analysis by Python, Excel, etc.
