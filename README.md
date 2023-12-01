@@ -3,7 +3,7 @@ Miscellaneous material not directly related to another HEPData repository
 
 ## [notebooks](notebooks)
 
-[![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/HEPData/miscellaneous/master?filepath=notebooks)
+[![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/HEPData/miscellaneous/main?filepath=notebooks)
 
 ### [count_inspire_records_with_hepdata.ipynb](notebooks/count_inspire_records_with_hepdata.ipynb)
 
