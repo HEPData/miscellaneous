@@ -29,7 +29,8 @@ in the production environment.
 ### [plot_submissions_with_date.ipynb](notebooks/plot_submissions_with_date.ipynb)
 
 This Jupyter notebook makes a plot showing the number of "version 1"
-HEPData submissions per month, with a linear fit overlaid.  Again, the
+HEPData submissions per month, with a linear fit overlaid.  It also plots
+the number of HEPData submissions per year.   Again, the
 input is a (different) CSV file obtained by running the command
 `hepdata submissions write-stats-to-files`
 in the production environment.
