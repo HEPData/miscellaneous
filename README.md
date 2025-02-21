@@ -17,6 +17,9 @@ has a HEPData record.
 Written by Graeme Watt (Project Manager for HEPData) on 11th October 2017.
 Updated for new INSPIRE API on 15th April 2021.
 
+Expanded to allow optional restriction by ATLAS/CMS physics analysis group
+on 21st February 2025.
+
 ### [plot_submissions_per_coordinator.ipynb](notebooks/plot_submissions_per_coordinator.ipynb)
 
 This Jupyter notebook makes some plots showing the number of HEPData
@@ -30,7 +33,7 @@ in the production environment.
 
 This Jupyter notebook makes a plot showing the number of "version 1"
 HEPData submissions per month, with a linear fit overlaid.  It also plots
-the number of HEPData submissions per year.   Again, the
+the number of HEPData submissions per year.  Again, the
 input is a (different) CSV file obtained by running the command
 `hepdata submissions write-stats-to-files`
 in the production environment.
